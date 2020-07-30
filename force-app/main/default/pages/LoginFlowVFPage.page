@@ -1,0 +1,6 @@
+<apex:page controller="loginFLowController" action="{!pgAction}">
+<apex:form >
+Enter Verification Code: <apex:inputText value="{!inputVerPin}"/>
+<apex:commandButton value="Submit" action="{!FinishLoginFlowStartUrl}"/>
+</apex:form>
+</apex:page>

@@ -1,0 +1,23 @@
+<aura:component controller="OrderHeaderCls" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="currentOrders" type="List"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="sortedBy" type="String" default="Case_Record_URL__c"/>
+    <aura:attribute name="sortedDirection" type="String" />    
+	<lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:registerEvent name="refreshProductList" type="c:availableQuntityChangedEv"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+	<aura:handler event="c:addToCartClicked" action="{!c.handleApplicationEvent}"/>
+    
+    <lightning:datatable data="{!v.currentOrders}"
+                         columns="{!v.mycolumns}"
+                         keyField="Id"
+                         hideCheckboxColumn="true"
+                         showRowNumberColumn="true"
+                         rowNumberOffset="0"
+                         onsort="{!c.updateColumnSorting}"
+                         sortedBy="{!v.sortedBy}"
+                         sortedDirection="{!v.sortedDirection}"
+                         onrowaction = "{!c.alertTest}"
+                         /> 
+</aura:component>

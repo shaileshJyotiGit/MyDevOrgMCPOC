@@ -1,0 +1,75 @@
+<apex:page id="thePage" controller="myTestCtrl" standardStylesheets="false" showHeader="false" sidebar="false" docType="html-5.0">
+<head>
+<style>
+table, th, td {
+  border: 0px solid black;
+  padding: 0px;
+  table-layout:fixed;
+}
+table {
+  border-spacing: 0px;
+}
+.accordion {
+  background-color: #eee;
+  color: #444; */
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+<apex:repeat value="{!lstCOns}" var="myCon">
+<button class="accordion">
+<table style="width:100%">
+  <tr>
+    <td>Firstname: {!myCon.FirstName}</td>
+    <td>Lastname: {!myCon.Lastname}</td> 
+    <td>Email: {!myCon.Email}</td>
+  </tr>
+</table></button>
+<div class="panel">
+  <p>{!myCon.Phone}</p>
+</div>
+</apex:repeat>
+
+<script>
+var input = document.getElementById("zipcode");
+    input.placeholder = "My Test Value";
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+    <apex:form >
+	<apex:inputText id="zipcode" html-placeholder="Enter {!IF(1=1,'United Kingdom', 'USA')}"  />
+     <input type="checkbox" />
+    </apex:form>
+</apex:page>

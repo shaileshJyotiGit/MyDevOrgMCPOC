@@ -1,0 +1,75 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="newAccount" type="Object"/>
+    <aura:attribute name="simpleNewAccount" type="Account"/>
+    <aura:attribute name="newAccountError" type="String"/>
+    <aura:attribute name="accObject" type="Account[]" />
+    <aura:attribute name="showbt" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+                      
+    <!-- Display the new contact form -->
+    <div class="Create Account">
+    <lightning:card iconName="action:new_account" title="Create Account">
+    <lightning:recordEditForm
+            onload="{!c.handleLoad}"
+            onsubmit="{!c.addNewRow}"
+            onsuccess="{!c.handleSuccess}"
+            objectApiName="Account">
+        <lightning:accordion aura:id="accordion" activeSectionName="A" allowMultipleSectionsOpen="true">
+            <lightning:accordionSection name="A" label="Name">
+                <lightning:inputField fieldName="Name" />
+            </lightning:accordionSection>
+            <lightning:accordionSection name="B" label="Type and Phone">
+                <lightning:inputField fieldName="Type" />
+                <lightning:inputField fieldName="Phone" />
+            </lightning:accordionSection>
+            <lightning:accordionSection name="C" label="Custom Object">
+                <lightning:inputField fieldName="Cust_Obj__c" />
+            </lightning:accordionSection>
+        </lightning:accordion>
+        </lightning:recordEditForm>
+        </lightning:card>
+    </div>
+    <div class="Create Account">
+    <lightning:card iconName="action:new_account" title="Create Account">
+     <aura:iteration items="{!v.accObject}" var="item" indexVar="idx">
+     <lightning:recordEditForm
+            onload="{!c.handleLoad}"
+            onsubmit="{!c.addNewRow}"
+            onsuccess="{!c.handleSuccess}"
+            objectApiName="Account">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+
+                <lightning:layout multipleRows="true" horizontalAlign="space">
+                    <lightning:layoutItem padding="around-small" size="4" >
+                        <lightning:inputField fieldName="Name" value="{!item.Name}"/>                    
+                        <lightning:inputField fieldName="Type" value="{!item.Type}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small" size="4" >
+                        <lightning:inputField fieldName="Phone" value="{!item.Phone}"/>                   
+                        <lightning:inputField fieldName="Cust_Obj__c" value="{!item.Cust_Obj__c}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="slds-p-around_xxx-small" >
+                        <!-- <aura:renderIf isTrue="{!v.showbt}">
+                            <lightning:button disabled="{!v.disabled}" aura:id="addbutt" variant="brand" name="Save" label="Save" type="submit" />
+                            <aura:set attribute="else">
+                              <lightning:button disabled="{!v.disabled}" aura:id="delbutt" variant="destructive" name="Delete" label="Delete" type="submit"/>
+                            </aura:set>
+                        </aura:renderIf> -->
+                       <aura:if isTrue="{!idx+1 == v.accObject.length}">
+                            <lightning:button disabled="{!v.disabled}" aura:id="addbutt" variant="brand" name="{!idx}" label="Save" type="submit" />
+                            <aura:set attribute="else">
+                              <lightning:button disabled="{!v.disabled}" aura:id="delbutt" variant="destructive" name="{!idx}" label="Delete" type="submit" />
+                            </aura:set>
+                        </aura:if>                         
+                    </lightning:layoutItem>
+				</lightning:layout>
+        </lightning:recordEditForm>
+       </aura:iteration>
+        <lightning:button disabled="{!v.disabled}" aura:id="donebutt" variant="brand" name="Add Row" label="Add Row" onclick="{!c.addMoreRow}"/>
+        </lightning:card>
+    </div>
+
+   
+</aura:component>

@@ -1,0 +1,11 @@
+<apex:page standardController="Case" recordSetVar="caseObj" >
+    <apex:repeat value="{!caseObj}" var="cs" rendered="false">
+        {!cs.id}{!cs.OwnerID}
+    </apex:repeat>
+    
+    <flow:interview name="myFlowTest" finishLocation="{!URLFOR($Action.Case.List,$ObjectType.Case)}">
+    
+    <apex:param name="CaseList" value="{!selected}"/>
+    </flow:interview>
+    
+</apex:page>

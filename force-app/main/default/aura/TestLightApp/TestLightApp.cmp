@@ -1,0 +1,16 @@
+<aura:component   implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="caseList" type="Case[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+    <lightning:listView aura:id="listViewCases"
+                        objectApiName="Case"
+                        listName="caseList"
+                        rows="5"
+                        showActionBar="true"
+                        enableInlineEdit="true"
+                        showRowLevelActions="true"
+                        />
+    
+</aura:component>

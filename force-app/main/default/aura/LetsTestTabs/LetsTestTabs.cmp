@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride,lightning:availableForFlowScreens" access="global" >
+    <!--<aura:attribute name="contact" type="MC_SearchUtility."/>-->
+    <aura:attribute name="fromQuickActionInd" type="String" />
+    <aura:attribute name="phoneFlow" type="String" />
+   
+      <div class="c-container">
+        <lightning:layout>
+            <lightning:layoutItem padding="around-small">
+                <span> Company Selected:</span>
+                <lightning:pill label="My Company">
+				        <aura:set attribute="media">
+				            <lightning:icon iconName="standard:account"  alternativeText="Account"/>
+				        </aura:set>
+				    </lightning:pill>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" alignmentBump="left">
+                <span> Contact Selected:</span>
+                <lightning:pill label="This Contact">
+				        <aura:set attribute="media">
+				            <lightning:icon iconName="standard:contact"  alternativeText="Contact"/>
+				        </aura:set>
+				    </lightning:pill>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

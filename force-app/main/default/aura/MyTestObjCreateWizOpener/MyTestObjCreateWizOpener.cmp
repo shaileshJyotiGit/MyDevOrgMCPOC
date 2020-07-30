@@ -1,0 +1,6 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:hasPageReference" access="global" >
+<lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="parentRecordId" type="String" />
+<aura:handler name='init' action="{!c.init}" value="{!this}" />
+</aura:component>

@@ -1,0 +1,25 @@
+<aura:component controller="PaginationController" access="global" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="scheduleDatetime" type="string" />
+
+    <div class="slds-card__header slds-grid">
+    <lightning:input
+        aura:id="field"
+        name="datetimeInput"
+        label="Set up a date/time"
+        value="{! v.scheduleDatetime }"
+        onchange="{! c.onChange }"
+    />
+    <lightning:button label="Register" onclick="{! c.register }" />
+
+	<!--<lightning:recordEditForm
+            onload="{!c.handleLoad}"
+            recordId="0036F00002WhwtXQAR"
+            objectApiName="Contact">
+            <lightning:messages />
+
+            <lightning:inputField fieldName="AccountId" />
+        	<lightning:inputField fieldName="LastName" aura:id="cons" access="global"/>
+        </lightning:recordEditForm> -->
+    </div>
+</aura:component>

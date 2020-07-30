@@ -1,0 +1,46 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                controller='PaginationController'
+                access="global" >
+    
+    <!-- Attribute Declration For Pagination -->
+    <aura:attribute name="ContactData" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+     <aura:attribute name="isSending" type="boolean" />
+    <aura:attribute name="recordId" type="String"/>
+    <!-- Attribute Declration For Pagination -->
+    <aura:attribute name="PaginationList" type="Contact"/>
+    <aura:attribute name="startPage" type="Integer" />
+    <aura:attribute name="endPage" type="Integer"/>
+    <aura:attribute name="totalRecords" type="Integer"/>
+    <aura:attribute name="pageSize" type="Integer" default="10"/>
+    <!-- Attribute Declration For Pagination End-->
+    <lightning:empApi aura:id="empApi"/>
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    
+    
+    <div class="slds-page-header">
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-standard-opportunity" 
+                      title="Description of icon when needed">
+                    
+                </span>
+            </div>
+            <div class="slds-media__body">
+                <h1 class="slds-page-header__title slds-truncate slds-align-middle" 
+                    title="Pagination Demo">Pagination Demo</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-m-top_medium" >
+        <lightning:datatable data="{!v.ContactData}" 
+                             class="slds-m-top_medium"
+                             columns="{!v.columns}" 
+                             keyField="id"
+                             onrowselection = "{!c.checkRowAct}"
+                             />	 
+       <!-- {!v.body} -->
+    </div>
+</aura:component>

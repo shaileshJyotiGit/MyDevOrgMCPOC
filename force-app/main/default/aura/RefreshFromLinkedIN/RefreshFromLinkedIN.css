@@ -1,0 +1,20 @@
+.THIS.slds-spinner_container {  
+  z-index: 10000;
+  position: fixed;   
+}
+
+.THIS .uiContainerManager.uiModal.slds-modal.slds-modal__container.slds-modal__header {
+    display: none !important;
+}
+
+.slds-button.slds-modal__close.closeIcon.slds-button_icon-bare.slds-button_icon-inverse.THIS{
+   display: none!important;
+}
+
+.slds-modal__close.THIS {
+   
+    display:none!important;
+}
+.THIS.slds-modal__content {
+    background:transparent!important;
+}

@@ -1,0 +1,87 @@
+<aura:component >
+<aura:attribute name="timeOpen" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+<div class="slds-page-header">
+<div class="slds-grid">
+<div class="slds-col slds-has-flexi-truncate">
+<div class="slds-media slds-no-space slds-grow">
+<div class="slds-media__figure">
+<span class="slds-icon_container slds-icon-standard-opportunity" title="Description of icon when needed">
+    <lightning:icon iconName="standard:case" size="x-small" alternativeText="Indicates approval"/>
+</span>
+</div>
+<div class="slds-media__body">
+<nav>
+<ol class="slds-breadcrumb slds-line-height_reset">
+<li class="slds-breadcrumb__item">
+<span>Cases</span>
+</li>
+</ol>
+</nav>
+<h1 class="slds-page-header__title slds-p-right_x-small">
+<span class="slds-grid slds-has-flexi-truncate slds-grid_vertical-align-center">
+<span class="slds-truncate" title="Open Cases">Open Cases</span>
+<span class="slds-icon_container slds-icon-utility-down" title="Description of icon when needed">
+<!-- <lightning:icon iconName="utility:down" size="x-small" alternativeText="Indicates approval"/> -->
+<span class="slds-assistive-text">Description of icon when needed</span>
+</span>
+</span>
+</h1>
+</div>
+</div>
+</div>
+<div class="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small">
+<div class="slds-button-group" role="group">
+<button class="slds-button slds-button_neutral">New</button>
+<div class="slds-button_last">
+<button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true" title="More Actions">
+<lightning:icon iconName="utility:down" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">More Actions</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="slds-grid">
+<div class="slds-col slds-align-middle">
+<p class="slds-text-body_small">10 items • Updated {!v.timeOpen} ago</p>
+</div>
+<div class="slds-col slds-no-flex slds-grid slds-align-bottom">
+<div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small">
+<button class="slds-button slds-button_icon slds-button_icon-more" aria-haspopup="true" title="List View Controls">
+<lightning:icon iconName="utility:settings" size="x-small" alternativeText="Indicates approval"/>
+<lightning:icon iconName="utility:down" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">List View Controls</span>
+</button>
+</div>
+<div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_xx-small">
+<button class="slds-button slds-button_icon slds-button_icon-more" aria-haspopup="true" title="Change view">
+<lightning:icon iconName="utility:table" size="x-small" alternativeText="Indicates approval"/>
+<lightning:icon iconName="utility:down" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">Change view</span>
+</button>
+</div>
+<button class="slds-button slds-button_icon slds-m-left_xx-small slds-button_icon-border-filled" title="Edit List">
+<lightning:icon iconName="utility:edit" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">Edit List</span>
+</button>
+<button class="slds-button slds-button_icon slds-m-left_xx-small slds-button_icon-border-filled" title="Refresh">
+<lightning:icon iconName="utility:refresh" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">Refresh</span>
+</button>
+<div class="slds-button-group" role="group">
+<button class="slds-button slds-button_icon slds-button_icon-border-filled" title="Charts">
+<lightning:icon iconName="utility:chart" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">Charts</span>
+</button>
+<button class="slds-button slds-button_icon slds-button_icon-border-filled" title="Filters">
+    <lightning:icon iconName="utility:filterList" size="x-small" alternativeText="Indicates approval"/>
+<span class="slds-assistive-text">Filters</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+  <c:OppCompo />   
+</aura:component>

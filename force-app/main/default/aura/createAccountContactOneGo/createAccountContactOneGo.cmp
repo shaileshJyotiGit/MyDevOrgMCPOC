@@ -1,0 +1,78 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="newAccount" type="Object"/>
+	<aura:attribute name="masterCardTeam" type="Contact[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+                      
+    <!-- Display the new contact form -->
+    <div class="Create Account">
+    <lightning:card iconName="action:new_account" title="Create Account">
+    <lightning:recordEditForm objectApiName="Account">
+           <!-- onload="{!c.handleLoad}"
+            onsubmit="{!c.addNewRow}"
+            onsuccess="{!c.handleSuccess}"
+            objectApiName="Account"> -->
+        <lightning:accordion aura:id="accordion" activeSectionName="A" allowMultipleSectionsOpen="true">
+            <lightning:accordionSection name="A" label="Name">
+                <lightning:inputField fieldName="Name" />
+            </lightning:accordionSection>
+            <lightning:accordionSection name="B" label="Type and Phone">
+                <lightning:inputField fieldName="Type" />
+                <lightning:inputField fieldName="Phone" />
+            </lightning:accordionSection>
+            <lightning:accordionSection name="C" label="Custom Object">
+                <lightning:inputField fieldName="Cust_Obj__c" />
+            </lightning:accordionSection>
+        </lightning:accordion>
+        </lightning:recordEditForm>
+        </lightning:card>
+    </div>
+	<div class="slds-box slds-box_xx-small" style="width:50%;background-color:#add8e6;margin-top: 2rem;">
+        <p><b>Create Contacts</b></p>
+    </div>
+    <table id="dataEventTable" class="slds-table " style="width:100%">
+        <tbody>
+            <aura:iteration var="item" items="{!v.masterCardTeam}" indexVar="i">
+                <tr data-index="{!i}">
+                    <div>
+                        
+                        <lightning:recordEditForm aura:id="recordViewForm"
+                                                  objectApiName="Contact" class="boxSize"
+                                                  onsubmit="{!c.addCriterion1}">
+                            <td data-index="{!i}" style="width:25%">
+                                <lightning:inputField fieldName="LastName" value="{!item.LastName}"/>
+                            </td>
+                             <td data-index="{!i}" style="width:25%">
+                                <lightning:inputField fieldName="AccountId" value="0016F00002NQnPaQAL"/>
+                            </td>
+                            <td data-index="{!i}" style="width:25%">
+                                <tr data-index="{!i}">
+                                        <button class="slds-button--neutral" onclick="{!c.addCriterion1}" >
+                                            <!--   <lightning:icon iconName="utility:new" size="small" class="fillGreenIcon"/> -->
+                                            <b>Add12</b>
+                                        </button>
+                                </tr>
+                                <tr data-index="{!i}">
+                                    <aura:if isTrue="{!i+1==v.masterCardTeam.length}">
+                                        <button class="slds-button slds-button--neutral" type="submit" data-index="{!i}">
+                                            <!--   <lightning:icon iconName="utility:new" size="small" class="fillGreenIcon"/> -->
+                                            <b>Add Trainer</b>
+                                        </button>
+                                    </aura:if>
+                                    <aura:if isTrue="{!i+1!=v.masterCardTeam.length}">
+                                        <button class="slds-button slds-button--neutral" onclick="{!c.deleteCriterion1}" data-index="{!i}">
+                                            <!--   <lightning:icon iconName="utility:new" size="small" class="fillGreenIcon"/> -->
+                                            <b>Delete Trainer</b>
+                                        </button>
+                                    </aura:if>
+                                </tr>
+                                
+                            </td>
+                        </lightning:recordEditForm>
+                    </div>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    
+</aura:component>

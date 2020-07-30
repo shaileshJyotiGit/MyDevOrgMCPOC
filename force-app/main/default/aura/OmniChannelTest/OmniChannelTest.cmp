@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:backgroundUtilityItem" access="global" >
+    <lightning:omniToolkitAPI aura:id="omniToolkit" />  
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+    <aura:handler event="lightning:omniChannelWorkAssigned" action="{! c.onStatusChanged }"/>
+</aura:component>

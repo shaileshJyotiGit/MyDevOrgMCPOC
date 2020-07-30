@@ -1,0 +1,60 @@
+<aura:component implements="force:appHostable,lightning:actionOverride,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="OrderHeaderCls">
+    <!-- Testing Purpose -->
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navService"/>
+    <!-- -->
+     <aura:attribute name="thisUser" type="Object" default="{}"/>
+    <aura:attribute name="errors" type="String"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="myId" type="Id" />
+    <aura:attribute name="runths" type="boolean" default="false"/>
+    <aura:attribute name="OrderObj" type="Object" />
+    <aura:attribute name="OrderCount" type="Integer" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:addToCartClicked" action="{!c.handleApplicationEvent}"/>
+    <aura:handler event="c:OLIDeleted" action="{!c.handleApplicationEventOnDelete}"/>
+    <!--  TESTING PURPOSE -->
+    <aura:if isTrue="{!v.runths}">
+        <!--
+    	    <lightning:recordViewForm aura:id="viewForm" recordId="{!v.myId}" objectApiName="User">
+                <div class="slds-box">
+                    <lightning:outputField fieldName="Name" aura:id="inptfld"/>
+        		</div>
+           </lightning:recordViewForm>
+		-->
+        <force:recordData aura:id="currentUser"
+                       recordId = "{!v.myId}"
+                       fields="Name, Id"
+                       targetFields="{!v.thisUser}"
+                       targetError="{!v.errors}"
+                       recordUpdated="{!c.callOnload}"
+                       mode="VIEW"/>
+      
+    </aura:if>
+    <!--   END   -->
+    <article class="slds-card">
+  <div class="slds-card__header slds-grid">
+    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+      <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+            <!--    <lightning:button label="Lets Test" title="Test action" onclick="{! c.handleClick }"/> -->
+            <span class="slds-text-heading_small">Order Number: {!v.OrderObj.OrderNumber}</span>
+        </h2>
+      </div>
+        <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+            <span class="slds-text-heading_small">PriceBook: Standard Price Book</span>
+        </h2>
+      </div>
+         <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+            <span class="slds-text-heading_small">Cart: {!v.OrderObj.NoOfItems__c}</span>
+        </h2>
+      </div>
+    </header>
+  </div>
+  <div class="slds-card__body"></div>
+  <footer class="slds-card__footer"></footer>
+</article>
+</aura:component>

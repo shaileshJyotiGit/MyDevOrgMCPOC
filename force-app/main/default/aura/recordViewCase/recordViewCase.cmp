@@ -1,0 +1,25 @@
+<aura:component controller="ContactController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="caseRecId" type="string" />
+    <aura:attribute name="myCase" type="object" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+	<div class="Record Details">
+    <lightning:card iconName="action:clone" title="Clone Internship">
+        <div class="slds-p-horizontal--small"> 
+            <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Case"> 
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:outputField fieldName="CaseNumber" />
+                        <lightning:outputField fieldName="Subject" />
+                        <lightning:outputField fieldName="Status" />
+                        <lightning:outputField fieldName="Description" />
+                    </div>
+                </div>
+            </lightning:recordViewForm>
+            <lightning:formattedText value="{!v.myCase.CaseNumber}" /><br/>
+            <lightning:formattedText value="{!v.myCase.Status}" /><br/>
+            <lightning:formattedText value="{!v.myCase.Subject}" /><br/>
+            <lightning:formattedText value="{!v.myCase.Description}" /><br/>
+        </div>
+        </lightning:card>
+    </div>
+</aura:component>

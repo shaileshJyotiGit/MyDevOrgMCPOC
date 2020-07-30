@@ -1,0 +1,20 @@
+<apex:page Standardcontroller="Order">
+ <apex:includeLightning />
+<div style="width:30%;height:100px;" id="FlipcardContainer" />
+
+<script>
+    var thsAccid = '{!$CurrentPage.parameters.id}';
+    $Lightning.use("c:OrderHeaderApp", function() {
+            // Write a function that creates the component on the page
+          $Lightning.createComponent("c:OrderHeader",
+          {
+              "recordId" : "{!$CurrentPage.parameters.id}"
+           },
+          "FlipcardContainer",
+          function(cmp) {
+            // do some stuff
+          });
+        });
+</script>
+
+</apex:page>

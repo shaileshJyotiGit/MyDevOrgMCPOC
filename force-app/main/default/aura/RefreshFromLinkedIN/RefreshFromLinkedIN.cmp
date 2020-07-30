@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" controller="UpdateFromLinkedIN">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- S1386447 - Himanshu - 15-Jun-20 updated default to True -->
+    <aura:attribute name="Spinner" type="boolean" default="true"/>
+    
+    <div class="slds-is-relative">
+     <!-- S1386447 - Himanshu - 15-Jun-20 added isVisible attribute -->
+     <ui:spinner aura:id="spinner" isVisible="{!v.Spinner}"/> 
+    </div>
+	
+  <!-- Loading spinner end--> 
+</aura:component>

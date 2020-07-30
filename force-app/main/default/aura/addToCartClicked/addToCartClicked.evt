@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+      <aura:attribute name="objName" type="object"/>
+      <aura:attribute name="quant" type="Integer"/>
+</aura:event>

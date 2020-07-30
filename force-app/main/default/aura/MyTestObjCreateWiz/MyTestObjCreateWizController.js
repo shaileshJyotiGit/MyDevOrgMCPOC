@@ -1,0 +1,51 @@
+({
+	myActionbk : function(component, event, helper) {
+        if(component.get("v.set2")){
+            component.set("v.set1",true);
+            component.set("v.set2",false);
+        }else
+        if(component.get("v.set3")){
+            component.set("v.set2",true);
+            component.set("v.set3",false);
+        }else
+        if(component.get("v.set4")){
+            component.set("v.set3",true);
+            component.set("v.set4",false);
+        }else
+        if(component.get("v.set5")){
+            component.set("v.set4",true);
+            component.set("v.set5",false);
+        }else
+        if(component.get("v.set6")){
+            component.set("v.set5",true);
+            component.set("v.set6",false);
+        }
+	},
+    myActionnxt : function(component, event, helper) {
+        if(component.get("v.set1")){
+            component.set("v.set2",true);
+            component.set("v.set1",false);
+            component.set("v.disabledbk",false);
+        }else
+        if(component.get("v.set2")){
+            component.set("v.set3",true);
+            component.set("v.set2",false);
+            component.set("v.disabledbk",false);
+        }else
+        if(component.get("v.set3")){
+            component.set("v.set4",true);
+            component.set("v.set3",false);
+            component.set("v.disabledbk",false);
+        }else
+        if(component.get("v.set4")){
+            component.set("v.set5",true);
+            component.set("v.set4",false);
+            component.set("v.disabledbk",false);
+        }else
+        if(component.get("v.set5")){
+            component.set("v.set6",true);
+            component.set("v.set5",false);
+            component.set("v.disabledbk",false);
+        }
+	}
+})

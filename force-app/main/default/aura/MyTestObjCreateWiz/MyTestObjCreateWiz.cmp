@@ -1,0 +1,55 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="disabledbk" type="Boolean" default="true" />
+    <aura:attribute name="saved" type="Boolean" default="false" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="recordId" type="String" />
+   
+    <aura:attribute name="set1" type="Boolean" default="true" />
+    <aura:attribute name="set2" type="Boolean" default="false" />
+    <aura:attribute name="set3" type="Boolean" default="false" />
+    <aura:attribute name="set4" type="Boolean" default="false" />
+    <aura:attribute name="set5" type="Boolean" default="false" />
+    <aura:attribute name="set6" type="Boolean" default="false" />
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner />
+    </aura:if>
+    <aura:if isTrue="{!!v.saved}">
+        <lightning:recordEditForm
+            onload="{!c.handleLoad}"
+            onsubmit="{!c.handleSubmit}"
+            onsuccess="{!c.handleSuccess}"
+            objectApiName="MyTestCustomObject__c">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+			<aura:if isTrue="{!v.set1}">
+            	<lightning:inputField fieldName="Account__c" />
+            </aura:if>
+            <aura:if isTrue="{!v.set2}">
+           	 	<lightning:inputField fieldName="Field_1__c" />
+            </aura:if>
+            <aura:if isTrue="{!v.set3}">
+            	<lightning:inputField fieldName="Field_2__c" />
+            </aura:if>
+            <aura:if isTrue="{!v.set4}">
+            	<lightning:inputField fieldName="Field_3__c" />
+            </aura:if>
+            <aura:if isTrue="{!v.set5}">
+            	<lightning:inputField fieldName="Field_4__c" />
+            </aura:if>
+            <aura:if isTrue="{!v.set6}">
+            	<lightning:inputField fieldName="Field_5__c" />
+            </aura:if>
+            <div class="slds-m-top_medium">
+                <lightning:button disabled="{!v.disabledbk}" variant="brand" name="Back" label="Back" onclick="{!c.myActionbk}" />
+                <lightning:button disabled="{!v.disabled}" variant="brand" name="Next" label="Next" onclick="{!c.myActionnxt}"/>
+                <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Save" />
+            </div>
+        </lightning:recordEditForm>
+        <aura:set attribute="else">
+            <p>Saved! New record id is {!v.recordId}</p>
+        </aura:set>
+    </aura:if>
+
+</aura:component>

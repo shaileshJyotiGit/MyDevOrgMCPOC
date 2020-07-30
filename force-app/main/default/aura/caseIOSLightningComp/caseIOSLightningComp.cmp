@@ -1,0 +1,44 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride,lightning:availableForFlowScreens,lightning:isUrlAddressable" access="global" >
+<!--    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="fields" type="String[]" default="['Case__r.Subject__c','Case__r.Description__c']" /> -->
+     <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>   -->
+   <!-- 	<aura:attribute name="accountRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    <force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Case__r.Subject__c,Case__r.Description__c"
+    targetFields="{!v.accountRecord}"
+    targetError="{!v.recordLoadError}"
+    />
+    
+    <div> 
+        <lightning:card iconName="standard:account">
+                <lightning:recordForm recordId="{!v.recordId}" 
+                          objectApiName="Case"
+                          mode="readonly"
+                          fields="{!v.fields}" />
+            <div >
+                <p>{!v.recordLoadError}</p>
+                <p ><lightning:formattedPhone title="Phone" value="{!v.accountRecord.Case__r.Subject__c}" /></p>
+                <p class="slds-truncate"><lightning:formattedText title="Description" value="{!v.accountRecord.Case__r.Description__c}" /></p>
+            </div>
+        </lightning:card>
+    </div>-->
+    <lightning:button aura:id="myBtn" label="Help" class="open-button" onclick="{!c.openForm}"/>
+    <h2>Popup Form</h2>
+    <p>Click on the button at the bottom of this page to open the login form.</p>
+    <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p>
+    <div class="form-popup" aura:id="myForm" style="position: fixed;width:300px;overflow-y: scroll;margin-left:80%;margin-top:1%;height:600px;display:none;border:2px solid red;">
+        <form class="form-container">
+            <h1>Title</h1>
+            
+            <label for="email"><b>Some text</b></label>
+                       
+            <label for="psw"><b>Some Text</b></label>            
+            
+            <lightning:button name="test" label="Login" class="btn"/>
+            <lightning:button label="Close"  class="btn cancel" onclick="{!c.closeForm}"/>
+        </form>
+    </div>
+</aura:component>

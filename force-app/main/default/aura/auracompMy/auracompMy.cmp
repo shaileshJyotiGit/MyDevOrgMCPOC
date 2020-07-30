@@ -1,0 +1,9 @@
+<aura:component controller="ContactController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">      
+   <!-- 
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:button label="Get Enclosing Tab Id" onclick="{! c.isFocusedTabSubtab }" />
+-->
+    <aura:attribute name="fldVal" type="Long" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+</aura:component>

@@ -1,0 +1,59 @@
+<aura:component controller="lookUpController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+ 
+<!--Including lightning design system library-->
+<ltng:require styles="/resource/1531853406000/lightningCss?isdtp=p1" />
+ 
+<!--declare attributes-->
+<aura:attribute name="listOfSearchRecords" type="Contact[]" description="Use,for store the list of search records which returns from apex class"/>
+<aura:attribute name="SearchKeyWord" type="string"/>
+<aura:attribute name="Message" type="String" default="Search Result.."/>
+<aura:attribute name="SearchedResult" type="Contact[]" />
+<aura:attribute name="Dropdownlist" type="Boolean" default="true"/>
+<aura:attribute name="selectedOp" type="string" /> 
+<!--For applying CSS to/(Fixing the position of) Modal-Popup-->
+<aura:attribute name="cssStyle" type="String" />
+<!--declare events hendlers-->
+<aura:handler name="myEvent" event="c:selectedContactEvent" action="{!c.setSelConId}" />
+<lightning:overlayLibrary aura:id="overlayLib"/>
+<lightning:layout horizontalAlign="center">
+    <lightning:layoutItem size="4">
+        <label class="myLabel">Search Contact</label>
+		<lightning:input type="search" label="" name="search" onfocus="{!c.SearchContact}"/>
+    </lightning:layoutItem>
+ </lightning:layout>
+<!-- Moadal Popup for showing the search window on press of lookup icon -->
+<div role="dialog" tabindex="-1" aura:id="ContactLookup" class="slds-modal slds-fade-in-open visibilityNO">
+<div class="slds-modal__container">
+<div class="slds-modal__header" style="padding-bottom:15px;">
+    <lightning:input type="text" name="Search Con" label="Search Con" value="{!v.SearchKeyWord}" onchange="{!c.keyPressController}" /> 
+</div>
+<div class="slds-modal__content slds-p-around--medium">
+<div class="slds-lookup__item--label slds-text-body--small">{!v.Message}</div>
+<table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_fixed-layout">
+<thead>
+<tr class="slds-text-heading--label">
+<th scope="col"><span class="slds-truncate"></span></th>
+<th scope="col"><span class="slds-truncate">Contact Name</span></th>
+<th scope="col"><span class="slds-truncate">Account Name</span></th>
+<th scope="col"><span class="slds-truncate">Email</span></th>
+<th scope="col"><span class="slds-truncate">Phone</span></th>
+    
+</tr>
+</thead>
+<tbody>
+ 
+<!--Child component for showing the searched result -->
+<aura:iteration items="{!v.SearchedResult}" var="obj">
+<c:cutomLookupResult_Child2 con="{!obj}" />
+</aura:iteration>
+</tbody>
+</table>
+</div>
+<div class="slds-modal__footer">
+<ui:button label="Save" class="slds-button slds-button--brand" labelClass="label" press="{!c.GetSelectedCont}" />
+<ui:button label="Cancel" class="slds-button slds-button--brand" labelClass="label" press="{!c.HideContactPopup}" />
+</div>
+</div>
+</div>
+<div class="slds-backdrop slds-backdrop--open visibilityNO" aura:id="popUpBackgroundId1"></div>
+</aura:component>
